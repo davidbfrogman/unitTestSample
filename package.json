@@ -23,10 +23,10 @@
     "@infor/sohoxi": "4.2.6-develop",
     "@infor/sohoxi-angular": "^4.2.6-develop",
     "core-js": "^2.4.1",
+    "jquery": "^3.1.1",
+    "moment": "^2.18.0",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6",
-    "jquery": "3.1.1",
-    "moment": "^2.18.0"
+    "zone.js": "^0.7.6"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
