@@ -1,0 +1,18 @@
+<h1>{{title}}</h1>
+<div class="row">
+    <p>Current xQuery in Search component: {{xQuery}}</p>
+</div>
+<div class="row">
+    <idm-search-stack></idm-search-stack>
+</div>
+<div class="row">
+    <idm-attribute-search [(xQuery)]="xQuery" (attributeQueryChanged)="searchQueryChanged($event)"></idm-attribute-search>
+</div>
+<div class="row">
+    <idm-shortcuts  (shortcutQueryChanged)="searchQueryChanged($event)" ></idm-shortcuts>
+</div>
+<div class="row">
+    <idm-advanced-search [(xQuery)]="xQuery" (xQueryChanged)="searchQueryChanged($event)" ></idm-advanced-search>
+</div>
+
+

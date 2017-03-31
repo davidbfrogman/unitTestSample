@@ -1,0 +1,52 @@
+<div class="row">
+  <h1>{{title}}</h1>
+  <p>Current xQuery in Attribute Search component: {{xQuery}}</p>
+</div>
+<div class="row">
+  <div class="field">
+    <input [attr.id]="freeTextSearch" type="text " name="freeTextSearch" [(ngModel)]="freeTextSearch" placeholder="Free text search" />
+  </div>
+</div>
+<div class="row" style="padding-top:20px;">
+  <select soho-dropdown soho-busyindicator noSearch  style="min-width: 300px;" [(ngModel)]="selectedEntity" name="ddlEntities" (change)="onSelectedEntityChanged(selectedEntity)">
+    <option selected [value]="selectedEntity">&lt;Document Types&gt;</option>
+    <option *ngFor="let entity of entityList" [ngValue]="entity">{{entity.name}}</option>
+  </select>
+</div>
+<div class="row" style="padding-top:20px;">
+  <select soho-dropdown soho-busyindicator noSearch  style="min-width: 300px;" [(ngModel)]="selectedAttribute" name="ddlAttributes" (change)="onSelectedAttributeChanged(selectedAttribute)">
+    <option selected disabled [value]="selectedAttribute">&lt;Attributes&gt;</option>
+    <option *ngFor="let attribute of attributeList" [ngValue]="attribute">{{attribute.name}}</option>
+  </select>
+</div>
+<div class="row" style="padding-top:20px;">
+  <select soho-dropdown soho-busyindicator noSearch style="min-width: 300px;" [(ngModel)]="selectedOperation" name="ddlOperators">
+    <option selected disabled [value]="selectedOperation">&lt;Operation&gt;</option>
+    <option *ngFor="let operator of operatorList" [ngValue]="operator">{{operator.name}}</option>
+  </select>
+</div>
+<div class="row" style="padding-top:20px;">
+  <input *ngIf="showStringInputForAttrSearch" [attr.id]="operandString" type="text" name="operandString" [(ngModel)]="operandString" placeholder="Search"/>
+  <input *ngIf="showDatePickerForAttrSearch" [attr.id]="operandString" type="text" name="operandString" [(ngModel)]="operandString" placeholder="Date Time Search"/>
+  <select soho-dropdown soho-busyindicator noSearch style="min-width: 300px;" *ngIf="showDropDownListInputForAttrSearch" [(ngModel)]="selectedValue" name="ddlValues">
+    <option selected disabled [value]="selectedValue">&lt;Value&gt;</option>
+    <option *ngFor="let value of valueSetList" [ngValue]="value">{{value.desc}}</option>
+  </select>
+  <input *ngIf="showDateTimePickerForAttrSearch" soho-datepicker name="datetime" name="dpAttributeSearch" style="min-width: 300px;"
+          dateFormat="MM/dd/yyyy" 
+          timeFormat="HH:mm:ss" showTime="true" 
+          mode="standard" 
+          placeholder="MM/dd/yyyy HH:mm:ss" [(ngModel)]="selectedDateTime"/>
+  <input style="min-width: 300px;" soho-timepicker *ngIf="showTimePickerForAttrSearch" name="tpAttributeSearch" timeFormat="hh:mm:ss" mode="standard" [(ngModel)]="selectedTime"/>       
+  <input [formControl]="searchUserFormControl" *ngIf="showUserInputForAttrSearch"  [attr.id]="userSearch" type="text" name="userSearch" placeholder="Search Users" />
+  <ul style="height: 150px;" *ngIf="showUserInputForAttrSearch">
+    <li style="height: 20px;" *ngFor="let user of usersList"><p>{{user.nameAndEmail}}<p></li>
+  </ul>
+</div>
+<div class="row" style="padding-top:20px;">
+  <button *ngIf="!isEditingSearchStack" soho-button (click)="onClickSearch($event)">Search</button>
+  <button *ngIf="!isEditingSearchStack" soho-button (click)="onClickAddStack($event)">Add Stack</button>
+  <button *ngIf="isEditingSearchStack" soho-button (click)="onClickSaveStack($event)">Save Stack</button>
+  <button *ngIf="isEditingSearchStack" soho-button (click)="onClickCancel($event)">Cancel</button>
+</div>
+

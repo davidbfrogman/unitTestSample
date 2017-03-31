@@ -1,32 +1,61 @@
-import { TestBed, async } from '@angular/core/testing';
-
+import {} from 'jasmine';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './not-found.component';
+import { AppRoutes } from './app.routes';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { APP_BASE_HREF } from '@angular/common';
+
+import { SohoIconModule} from '@infor/sohoxi-angular';
+import { ClientModule } from '../client/client.module';
+import { RelatedinformationModule } from '../relatedinformation/relatedinformation.module';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        PageNotFoundComponent
       ],
-    }).compileComponents();
-  }));
+      imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        AppRoutes,
+        ClientModule,
+        RelatedinformationModule,
+        SohoIconModule
+      ],
+      providers: [
+        {provide: APP_BASE_HREF, useValue : '/' }
+      ]
+    });
+    TestBed.compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component    = fixture.componentInstance;
+  });
 
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   }));
 
-  it(`should have as title 'app works!'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app works!');
+ it(`should have as title 'AppComponent'`, async(() => {
+    expect(component.title).toEqual('AppComponent');
   }));
 
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it(`should render title 'AppComponent' in a h1 tag`, async(() => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
+    expect(compiled.querySelector('h1').textContent).toEqual(component.title);
   }));
 });

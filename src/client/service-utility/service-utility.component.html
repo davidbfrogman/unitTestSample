@@ -1,0 +1,75 @@
+<soho-expandable-area *ngIf="isDevelopment">
+  <soho-expandable-header>
+    <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+      <use xlink:href="#icon-url"></use>
+    </svg>
+    Service Utility
+  </soho-expandable-header>
+  <soho-expandable-pane fixed="false">
+    <div>
+      <form>
+        <div class="row">
+          <h3>File Upload</h3>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label [attr.for]="nameField" class="label" soho-label>Name</label>
+            <input [attr.id]="nameField" type="text " name="name-input" [(ngModel)]="fileName" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <soho-fileupload [name]="name1" [label]="text" (change)="onFileUploadChange($event)" ngDefaultControl></soho-fileupload>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <button soho-button (click)="onClickUpload($event)">Upload</button>
+          </div>
+          <div *ngIf="status">
+            <label>{{status}}</label>
+          </div>
+        </div>
+        <br />
+        <div class="row" style="padding-top:20px;">
+          <h3>Entities</h3>
+          <select [(ngModel)]="selectedEntity" name="ddlEntities" (change)="onSelectedEntityChange(selectedEntity)">
+            <!-- (change)="onchange(c.id)" -->
+            <option *ngFor="let entity of entityList" [ngValue]="entity">{{entity.name}}</option>
+            </select>
+        </div>
+        <div class="row" style="padding-top:20px;">
+          <h3>Advanced Search</h3>
+          <div class="field">
+            <label [attr.for]="advancedSearchTextarea" class="label" soho-label>xQuery</label>
+            <textarea soho-textarea [attr.id]="advancedSearchTextarea" name="advancedSearchTextarea" [(ngModel)]="xQuery" [resizable]="true"
+              name="taAdvancedSearchQuery"></textarea>
+          </div>
+          <div class="row">
+            <button soho-button (click)="onClickSearch($event)">Search</button>
+          </div>
+          <div *ngIf="itemsList" class="row" style="padding-top: 20px;">
+            <div>
+              <h3>List of Items Retrieved from search</h3>
+              <ul>
+                <li *ngFor="let item of itemsList">
+                  <span class="badge" (click)="onClickSelect(item)">Item ID: {{item.id}} filename: {{item.filename}}</span>
+                  <button soho-button (click)="onClickDelete(item)">Delete Item</button>
+                </li>
+              </ul>
+              <br />
+              <p>Total Items Recieved: {{itemsList.length}}</p>
+            </div>
+          </div>
+          <div class="row" *ngIf="selectedItem" style="padding-top:20px;">
+            <h3>Details</h3>
+            <p>id: {{selectedItem.id}}</p>
+            <p>filename: {{selectedItem.filename}}</p>
+            <p>entityName: {{selectedItem.entityName}}</p>
+            <p><img [attr.src]="selectedThumbnail" /></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </soho-expandable-pane>
+</soho-expandable-area> 

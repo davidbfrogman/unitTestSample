@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+<p>Current xQuery in Search Result component: {{xQuery}}</p>
+<div class="row">
+    <idm-action-menu></idm-action-menu>
+</div>
+<div class="row">
+    <idm-list-view-selector (listViewChanged)="listViewChanged($event)"></idm-list-view-selector>
+</div>
+<div class="row">
+    <idm-card-list *ngIf="isCardListSelected"></idm-card-list>
+    <idm-detail-list *ngIf="isDetailListSelected"></idm-detail-list>
+    <idm-thumbnail-list  *ngIf="isThumbnailListSelected"></idm-thumbnail-list>
+</div>

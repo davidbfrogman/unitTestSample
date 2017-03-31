@@ -1,0 +1,53 @@
+<h1>
+  {{title}} 
+</h1>
+
+<div class="row">
+  <div class="columns">
+    <div soho-tabs (activated)="onTabActivated($event)">
+      <ul soho-tab-list>
+        <li soho-tab selected="true"><a soho-tab-title tabId="tabs-documents">Documents</a></li>
+        <li soho-tab *ngFor="let tab of tabsData" dismissible="true"><a soho-tab-title [tabId]="tab.id">{{tab.title}}</a></li>
+        <li soho-tab dismissible="true"><a soho-tab-title tabId="tabs-dismissible-cc">Control Center</a></li>
+      </ul>
+
+      <div soho-tab-panel tabId="tabs-documents">
+        <p>Current xQuery in client component: {{xQuery}}</p>
+        <div class="row">
+          <div class="one-half column">
+            <idm-search [(xQuery)]="xQuery" (searchChanged)="searchChanged($event)"></idm-search>
+          </div>
+          <div class="one-half column">
+            <idm-search-result [xQuery]="xQuery" ></idm-search-result>
+          </div>
+        </div>
+      </div>
+      <div soho-tab-panel *ngFor="let tab of tabsData" [tabId]="tab.id">
+        <p>{{tab.content}}</p>
+          <idm-document-details pid={{tab.pid}}></idm-document-details>
+      </div>
+      <div soho-tab-panel tabId="tabs-dismissible-cc">
+        <idm-control-center></idm-control-center>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns">
+  <idm-service-utility></idm-service-utility>
+  </div>
+</div>
+
+<!--
+<div class="accordion" data-demo-set-links="true">
+      <div class="accordion-header">
+
+        <a href="#"><span>Service</span></a>
+      </div>
+      <div class="accordion-pane">
+        <div class="accordion-header">
+          
+        </div>
+      </div>
+</div>-->

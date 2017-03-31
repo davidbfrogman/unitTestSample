@@ -1,0 +1,56 @@
+<h1>{{title}}</h1>
+
+<div class="row">
+    <div class="columns">
+        <div *ngIf="item">
+            <div soho-tabs>
+                <ul soho-tab-list>
+                    <!-- Inserting item.pid since soho-tab requires tabId to be unique -->
+                    <li soho-tab selected="true"><a soho-tab-title tabId="tabs-properties-{{item.pid}}">Properties</a></li>
+                    <li soho-tab><a soho-tab-title tabId="tabs-attributes-{{item.pid}}">Attributes</a></li>
+                    <li soho-tab><a soho-tab-title tabId="tabs-file-{{item.pid}}">File</a></li>
+                    <li soho-tab><a soho-tab-title tabId="tabs-security-{{item.pid}}">Security</a></li>
+                    <li soho-tab><a soho-tab-title tabId="tabs-history-{{item.pid}}">History</a></li>
+                </ul>
+                
+                <div soho-tab-panel tabId="tabs-properties-{{item.pid}}">
+                    <p>Properties</p>
+                    
+                        <div class="row">
+                            <div class="one-half column">
+                                <p>Display name:</p>
+                            </div>
+                            <div class="one-half column">
+                                <p id="displayName">{{item.displayName}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="one-half column">
+                                <p>Filename:</p>
+                            </div>
+                            <div class="one-half column">
+                                <p id="filename">{{item.filename}}</p>
+                            </div>
+                        </div>
+                </div>
+                
+
+                <div soho-tab-panel tabId="tabs-attributes-{{item.pid}}">
+                    <p>Attributes</p>
+                </div>
+
+                <div soho-tab-panel tabId="tabs-file-{{item.pid}}">
+                    <p>File</p>
+                </div>
+
+                <div soho-tab-panel tabId="tabs-security-{{item.pid}}">
+                    <p>Security</p>
+                </div>
+
+                <div soho-tab-panel tabId="tabs-history-{{item.pid}}">
+                    <p>History</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,16 +20,22 @@
     "@angular/platform-browser": "^2.4.0",
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
+    "@infor/sohoxi": "4.2.6-develop",
+    "@infor/sohoxi-angular": "^4.2.6-develop",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6"
+    "zone.js": "^0.7.6",
+    "jquery": "3.1.1",
+    "moment": "^2.18.0"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
+    "@types/jquery": "^2.0.39",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
+    "htmlhint": "^0.9.13",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",

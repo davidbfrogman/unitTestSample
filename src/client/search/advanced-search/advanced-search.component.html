@@ -1,0 +1,14 @@
+<h1>Advanced Search Component</h1>
+<p>Current xQuery in Advanced Search component: {{xQuery}}</p>
+<div class="row" style="padding-left: 10px;">
+  <form>
+    <span class="code-tag">Advanced Search</span>
+    <div class="field">
+      <label [attr.for]="advancedSearchTextarea" class="label" soho-label>xQuery</label>
+      <textarea soho-textarea [attr.id]="advancedSearchTextarea" name="advancedSearchTextarea" [(ngModel)]="xQuery" [resizable]="true" name="taAdvancedSearchQuery"></textarea>
+    </div>
+    <div class="row">
+      <button soho-button (click)="onClickSearch($event)">Search</button>
+    </div>
+  </form>
+</div>

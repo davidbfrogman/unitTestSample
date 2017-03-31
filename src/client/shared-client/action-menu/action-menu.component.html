@@ -1,0 +1,18 @@
+<h1>{{title}}</h1>
+<soho-toolbar maxVisibleButtons="20" >
+    <soho-toolbar-button-set >
+        <button soho-button="icon" icon="add" title="Add" text="AddText" data-action="">Add</button>
+        <button soho-menu-button id="charts-btn" [icon]="pie-chart" data-action="{\'btn\' : \'charts\'}"></button>
+        <ul class="popupmenu">
+            <li id="pie">
+            <a data-action="{'item':'pie'}">Pie Chart</a>
+            </li>
+            <li id="line">
+            <a data-action="{'item':'line'}">Line Chart</a>
+            </li>
+            <li id="bubble">
+            <a data-action="{'item':'bubble'}">Bubble Chart</a>
+            </li>
+        </ul>
+    </soho-toolbar-button-set>
+</soho-toolbar>
